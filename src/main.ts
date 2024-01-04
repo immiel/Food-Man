@@ -83,10 +83,39 @@ class FoodManApp {
         }
 
         // Random block test. IT WORKS!
-        this.blocks[1][3].changeType(BlockType.Wall);
-        this.blocks[6][8].changeType(BlockType.Wall);
-        this.blocks[10][3].changeType(BlockType.Wall);
-        this.blocks[33][21].changeType(BlockType.Wall);
+        // this.blocks[1][3].changeType(BlockType.Wall);
+        // this.blocks[6][8].changeType(BlockType.Wall);
+        // this.blocks[10][3].changeType(BlockType.Wall);
+        // this.blocks[33][21].changeType(BlockType.Wall);
+
+        // Block all the borders.
+        let wallReplace = (block, index, arr) => {
+            //block.changeType(BlockType.Wall);
+            arr[index].changeType(BlockType.Wall);
+        };
+
+        // X is vertical, and Y is horizontal.
+        this.blocks[0].forEach(wallReplace);
+        this.blocks[blockWidthAmount - 1].forEach(wallReplace);
+
+        for (let x = 0; x < blockWidthAmount; x++) {
+            this.blocks[x][0].changeType(BlockType.Wall);
+            this.blocks[x][blockHeightAmount - 1].changeType(BlockType.Wall);
+        }
+
+        // TODO: Need separate file for mapping. Possibly json.
+        // Because everything was set as blocks, it was best that
+        // the maps were made in separate file. This makes things
+        // easier when we need to, say, create different maps.
+        // 
+        // Do keep in mind that
+
+
+
+
+
+
+
 
         this.redraw();
         this.createUserEvents();
