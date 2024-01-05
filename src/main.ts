@@ -82,6 +82,15 @@ class FoodManApp {
             }
         }
 
+        this.generateMap(blockWidthAmount, blockHeightAmount);
+
+        this.redraw();
+        this.createUserEvents();
+    }
+
+    // This is used to generate the map. There should be at least
+    // one map for the game.
+    private generateMap(blockWidth: number, blockHeight: number) {
         // Random block test. IT WORKS!
         // this.blocks[1][3].changeType(BlockType.Wall);
         // this.blocks[6][8].changeType(BlockType.Wall);
@@ -96,11 +105,11 @@ class FoodManApp {
 
         // X is vertical, and Y is horizontal.
         this.blocks[0].forEach(wallReplace);
-        this.blocks[blockWidthAmount - 1].forEach(wallReplace);
+        this.blocks[blockWidth - 1].forEach(wallReplace);
 
-        for (let x = 0; x < blockWidthAmount; x++) {
+        for (let x = 0; x < blockWidth; x++) {
             this.blocks[x][0].changeType(BlockType.Wall);
-            this.blocks[x][blockHeightAmount - 1].changeType(BlockType.Wall);
+            this.blocks[x][blockHeight - 1].changeType(BlockType.Wall);
         }
 
         // TODO: Need separate file for mapping. Possibly json.
@@ -108,7 +117,8 @@ class FoodManApp {
         // the maps were made in separate file. This makes things
         // easier when we need to, say, create different maps.
         // 
-        // Do keep in mind that
+        // Do keep in mind that this is a web app. It was probably
+        // best to have them all hard-coded within this file.
 
 
 
@@ -117,8 +127,9 @@ class FoodManApp {
 
 
 
-        this.redraw();
-        this.createUserEvents();
+
+
+
     }
 
     private createUserEvents() {
